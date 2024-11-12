@@ -1,1 +1,2 @@
 DATABASE_URL="postgresql://user:password@127.0.0.1:5433/micro1"
+JWT_SECRET="asdhfklasjdfklj"
