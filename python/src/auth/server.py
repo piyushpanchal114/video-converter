@@ -32,6 +32,22 @@ def login():
         return "invalid creadentials", 401
 
 
+@server.route("/validate", method=["POST"])
+def validate():
+    encoded_jwt = request.headers["Authorization"]
+    if not encoded_jwt:
+        return "missing credentials", 401
+
+    try:
+        token = encoded_jwt.split(" ")[1]
+        decoded_jwt = jwt.decode(
+            token, os.environ.get("JWT_SECRET"), algorithms=["HS256"])
+    except Exception:
+        return "not authorized", 403
+
+    return decoded_jwt
+
+
 def create_jwt(username, secret, is_admin):
     exp_time = datetime.datetime.now(tz=datetime.datetime.utc)\
         + datetime.timedelta(days=1)
