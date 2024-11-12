@@ -44,8 +44,7 @@ def validate():
             token, os.environ.get("JWT_SECRET"), algorithms=["HS256"])
     except Exception:
         return "not authorized", 403
-
-    return decoded_jwt
+    return decoded_jwt, 200
 
 
 def create_jwt(username, secret, is_admin):
