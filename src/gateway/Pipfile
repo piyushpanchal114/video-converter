@@ -5,6 +5,11 @@ name = "pypi"
 
 [packages]
 flask = "*"
+jedi = "*"
+pylint = "*"
+flask-pymongo = "*"
+pika = "*"
+requests = "*"
 
 [dev-packages]
 
